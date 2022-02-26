@@ -1,13 +1,12 @@
-import { StyleSheet, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
 import Header from "./src/components/shared/header/Header";
-import HomeScreen from './src/screens/HomeScreen';
-import HomeStackNavigator from './src/navigators/stack/HomeStackNavigator';
+import HomeScreen from "./src/screens/HomeScreen";
+import HomeStackNavigator from "./src/navigators/stack/HomeStackNavigator";
 
 export default function App() {
-
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.safeAreaContainer}>

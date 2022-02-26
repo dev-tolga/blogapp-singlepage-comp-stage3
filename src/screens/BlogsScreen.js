@@ -9,8 +9,10 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import { env } from ".././library/network/env/env";
 import { getBlogs } from "../library/network/requests/blogs";
 import { deleteBlogById } from "../library/network/requests/blogs";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 
 const BlogsScreen = ({ navigation, route }) => {
+  const isFocused = useIsFocused();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,10 +33,25 @@ const BlogsScreen = ({ navigation, route }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("useEffect");
-    getBlogList();
-  }, []);
+  /// üçü de aynı işi yapıyor. ama en efective kullanılan sımdılık acık olan kod fakat context apiıle yapılır dogrusu
+
+  // useEffect(() => {
+  //   if(isFocused) {
+  //     getBlogList();
+  //   }
+  // }, [isFocused]);
+
+  useFocusEffect(
+    useCallback(() => {
+      getBlogList();
+    }, [])
+  );
+
+  // useEffect(() => {
+  //   navigation.addListener("focus", () => {
+  //     getBlogList();
+  //   });
+  // }, []);
 
   const handleSearch = (search) => {
     setSearchTerm(search);
