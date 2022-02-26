@@ -3,17 +3,19 @@ import React, { useState, useEffect } from "react";
 import { blogs } from "./../../assets/data/blogs";
 import { getBlogById } from "../library/network/requests/blogs";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import Button from "../components/common/Button";
 
-const BlogDetailScreen = ({ route }) => {
+const BlogDetailScreen = ({ navigation,route }) => {
 
   const [blog, setBlog] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+  console.log("blog: ", route.params.blogId);
   const getBlog = async () => {
     setIsLoading(true);
     const res = await getBlogById(route.params.blogId);
     if (res && res.status === 200) {
       setBlog(res.data);
+      setIsLoading(false);
     } else {
       Alert.alert("Error", "Something went wrong");
     }
@@ -25,9 +27,12 @@ const BlogDetailScreen = ({ route }) => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={styles.wrapper}>
+    <ScrollView contentContainerStyle={styles.wrapper} style={{backgroundColor:'#fff'}} >
       {!isLoading ? (
         <View style={{ flex: 1 }}>
+        <View style={{}}>
+        <Button onPress={() => navigation.goBack()} buttonTitle="Go Back"/>
+        </View>
           <Text style={styles.blogTitle}>{blog.title}</Text>
           <Text style={styles.blogContent}>{blog.blogContent}</Text>
           <Text style={styles.author}>- {blog.author}</Text>

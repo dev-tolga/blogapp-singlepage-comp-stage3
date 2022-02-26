@@ -10,8 +10,7 @@ import { env } from ".././library/network/env/env";
 import { getBlogs } from "../library/network/requests/blogs";
 import { deleteBlogById } from "../library/network/requests/blogs";
 
-const BlogsScreen = ({ navigation ,route}) => {
-  console.log(route);
+const BlogsScreen = ({ navigation, route }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +22,7 @@ const BlogsScreen = ({ navigation ,route}) => {
     setIsLoading(true);
     try {
       const response = await getBlogs();
+
       setBlogList(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -76,9 +76,10 @@ const BlogsScreen = ({ navigation ,route}) => {
     ]);
   };
 
-  const handleUpdate = (item) => {
+  const handleUpdate = (blogId) => {
     //alert(item.title);
-     navigation.navigate("UpdateBlog", { blog:item });
+    // console.log("update blog", blogId);
+    navigation.navigate("UpdateBlog", { blogId });
   };
 
   return (

@@ -8,11 +8,11 @@ const BlogList = ({ data, handleDelete,handleUpdate, navigation }) => {
         <TouchableOpacity  onPress={() => console.log(navigation.navigate("BlogDetailScreen", { blogId: item.id }))}>
             <View style={styles.blog}>
                 <View style={{ flexDirection: "row" }}>
-                <AntDesign name="edit" size={24} color="black" onPress={() => handleUpdate(item)} />
+                <AntDesign name="edit" size={24} color="black" onPress={() => handleUpdate(item.id)} />
                     <Text style={styles.blogTitle}>{item.title}</Text>
                     <AntDesign name="delete" size={16} color="darkred" onPress={() => handleDelete(item.id)} style={{ flex: 1 }} />
                 </View>
-                <Text>{item.blogContent.substring(0, 50) + "..."}</Text>
+                <Text>{item.blogContent}</Text>
                 <Text>{item.author}</Text>
             </View>
         </TouchableOpacity>
