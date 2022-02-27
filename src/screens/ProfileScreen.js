@@ -41,7 +41,7 @@ const ProfileScreen = () => {
           >
             <AntDesign name="edit" size={24} color="black" />
             <Text style={{ fontSize: 20, color: "white", paddingLeft: 20 }}>
-              My Blogs
+              Settings
             </Text>
           </View>
         </TouchableOpacity>
@@ -58,7 +58,7 @@ const ProfileScreen = () => {
           >
             <AntDesign name="edit" size={24} color="black" />
             <Text style={{ fontSize: 20, color: "white", paddingLeft: 20 }}>
-              Autors
+              Change Password
             </Text>
           </View>
         </TouchableOpacity>
