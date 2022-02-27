@@ -13,7 +13,20 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeTabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarOptions: {
+          activeTintColor: "#fff",
+          inactiveTintColor: "#fff",
+          style: {
+            backgroundColor: "#357C3C",
+          },
+          labelStyle: {
+            fontSize: 12,
+          },
+        },
+      }}
+    >
       <Tab.Screen
         name="Blogs"
         component={BlogsScreen}

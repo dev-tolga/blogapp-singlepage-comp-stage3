@@ -8,14 +8,17 @@ import HomeStackNavigator from "./src/navigators/stack/HomeStackNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <SafeAreaView style={styles.safeAreaContainer}>
-        <Header headerTitle={"BlogApp"} />
-        <View style={styles.container}>
-          <HomeStackNavigator />
-        </View>
-      </SafeAreaView>
-    </NavigationContainer>
+    <>
+    <SafeAreaView style={{ flex: 0 }}/>
+      <NavigationContainer>
+        <SafeAreaView style={styles.safeAreaContainer}>
+          <Header headerTitle={"BlogApp"} />
+          <View style={styles.container}>
+            <HomeStackNavigator />
+          </View>
+        </SafeAreaView>
+      </NavigationContainer>
+    </>
   );
 }
 
