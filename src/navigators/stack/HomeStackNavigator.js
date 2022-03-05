@@ -28,8 +28,8 @@ const HomeTabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="Blogs"
-        component={BlogsScreen}
+        name="Home"
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="home" size={size} color={color} />
@@ -37,8 +37,8 @@ const HomeTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Blogs"
+        component={BlogsScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="form" size={size} color={color} />
