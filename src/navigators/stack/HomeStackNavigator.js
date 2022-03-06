@@ -18,14 +18,13 @@ const HomeTabNavigator = () => {
         tabBarOptions: {
           activeTintColor: "#fff",
           inactiveTintColor: "#fff",
-          style: {
-            backgroundColor: "#357C3C",
-          },
+          headerShown: false,
           labelStyle: {
             fontSize: 12,
           },
         },
       }}
+      sceneContainerStyle={{ paddingHorizontal: 5 }}
     >
       <Tab.Screen
         name="Home"

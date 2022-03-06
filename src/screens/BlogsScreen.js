@@ -10,6 +10,7 @@ import { env } from ".././library/network/env/env";
 import { getBlogs } from "../library/network/requests/blogs";
 import { deleteBlogById } from "../library/network/requests/blogs";
 import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import { useFavoriteContext } from "../contexts/FavoriteContext";
 
 const BlogsScreen = ({ navigation, route }) => {
   const isFocused = useIsFocused();
@@ -17,6 +18,9 @@ const BlogsScreen = ({ navigation, route }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [blogList, setBlogList] = useState([]);
+  const [isFavoriteFilterOn, setIsFavoriteFilterOn] = useState(false);
+
+   const { favoritedBlogList, handleFavorite } = useFavoriteContext();
 
   // const { data: blogList, isloading, error } = useFetch();
 
@@ -99,6 +103,26 @@ const BlogsScreen = ({ navigation, route }) => {
     navigation.navigate("UpdateBlog", { blogId });
   };
 
+  const blogListData = () => {
+    if (isFavoriteFilterOn) {
+      if (searchResults.length > 0) {
+        return searchResults.filter(
+          (blog) => favoritedBlogList.includes(blog.id) && blog
+        );
+      } else {
+        return blogList.filter(
+          (blog) => favoritedBlogList.includes(blog.id) && blog
+        );
+      }
+    } else {
+      if (searchResults.length > 0) {
+        return searchResults;
+      } else {
+        return blogList;
+      }
+    }
+  };
+
   return (
     <View>
       {isLoading ? (
@@ -117,10 +141,17 @@ const BlogsScreen = ({ navigation, route }) => {
               searchTerm={searchTerm}
               style={{ flex: 1, marginRight: 10, marginTop: 10 }}
             />
+            <Button
+              buttonTitle={"Favorites"}
+              onPress={() => setIsFavoriteFilterOn((prevState) => !prevState)}
+              buttonStyle={{
+                backgroundColor: isFavoriteFilterOn ? "darkred" : "white",
+              }}
+            />
           </View>
           {blogList && (
             <BlogList
-              data={searchResults.length > 0 ? searchResults : blogList}
+              data={blogListData()}
               handleDelete={handleDelete}
               handleUpdate={handleUpdate}
               navigation={navigation}
