@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./../../screens/HomeScreen";
 import BlogsScreen from "./../../screens/BlogsScreen";
@@ -8,9 +8,12 @@ import UpdateBlog from "../../screens/UpdateBlog";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../../screens/ProfileScreen";
 import { AntDesign } from "@expo/vector-icons";
+import LoginScreen from "../../screens/LoginScreen";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
 const HomeTabNavigator = () => {
   return (
     <Tab.Navigator
@@ -58,11 +61,22 @@ const HomeTabNavigator = () => {
 };
 
 const HomeStackNavigator = () => {
+  const { isAuth } = useContext(AuthContext);
+  console.log(isAuth);
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={HomeTabNavigator} />
-      <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
-      <Stack.Screen name="BlogDetailScreen" component={BlogDetailScreen} />
+      {isAuth ? (
+        <>
+          <Stack.Screen name="Home" component={HomeTabNavigator} />
+          <Stack.Screen name="UpdateBlog" component={UpdateBlog} />
+
+          <Stack.Screen name="BlogDetailScreen" component={BlogDetailScreen} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        </>
+      )}
     </Stack.Navigator>
   );
 };

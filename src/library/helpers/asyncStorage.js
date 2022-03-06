@@ -9,6 +9,13 @@ export const storeData = async (key, value) => {
   }
 };
 
+export const setUser = async (user) => {
+  try {
+    await storeData("user", user);
+  } catch (err) {
+    console.log(`AsyncStorage/setUser():\n ${err}`);
+  }
+};
 export const getData = async (key) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key);

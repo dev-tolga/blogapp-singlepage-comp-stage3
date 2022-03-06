@@ -30,5 +30,14 @@
       "author": "1",
       "id": 1645348683309
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Tolga",
+      "surname": "KAREN",
+      "email": "test@mail.com",
+      "password": "123456"
+    }
   ]
 }
