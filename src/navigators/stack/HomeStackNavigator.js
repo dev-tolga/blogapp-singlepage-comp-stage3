@@ -10,6 +10,7 @@ import ProfileScreen from "../../screens/ProfileScreen";
 import { AntDesign } from "@expo/vector-icons";
 import LoginScreen from "../../screens/LoginScreen";
 import { AuthContext } from "../../contexts/AuthContext";
+import RegisterScreen from "../../screens/RegisterScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,6 +76,7 @@ const HomeStackNavigator = () => {
       ) : (
         <>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         </>
       )}
     </Stack.Navigator>

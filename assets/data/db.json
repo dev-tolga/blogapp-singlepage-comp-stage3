@@ -38,6 +38,12 @@
       "surname": "KAREN",
       "email": "test@mail.com",
       "password": "123456"
+    },
+    {
+      "id": 2,
+      "email": "Test@mail.com",
+      "password": "12345"
     }
+   
   ]
 }
