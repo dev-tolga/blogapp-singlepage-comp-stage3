@@ -3,7 +3,7 @@
     {
       "title": "javascript programming2",
       "blogContent": "primitive types vs reference types",
-      "author": "Tolga11345671dfd",
+      "author": "Tolga11345671dfd1",
       "id": 2
     },
     {
@@ -44,6 +44,5 @@
       "email": "Test@mail.com",
       "password": "12345"
     }
-   
   ]
 }
