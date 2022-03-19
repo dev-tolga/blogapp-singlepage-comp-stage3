@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "api":"npx json-server --host 192.168.1.23 -p 3000 --deley 1800 --watch ./assets/data/db.json"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^5.11.15",

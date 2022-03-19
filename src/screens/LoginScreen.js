@@ -1,18 +1,18 @@
 import { StyleSheet, Text, View, TextInput, Alert } from "react-native";
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import Button from "../components/common/Button";
 import { AuthContext } from "../contexts/AuthContext";
 
 // Create a component for the form Login Screen
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordVisibility, setPasswordVisibility] = useState(true);
 
   const { handleLogin } = useContext(AuthContext);
 
-  const onPressLogin = async (email,password) => {
-   
-    const response = await handleLogin(email,password);
+  const onPressLogin = async (email, password) => {
+    const response = await handleLogin(email, password);
     if (!response) {
       Alert.alert("Login Filed", "Do you want register", [
         {
@@ -25,10 +25,15 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
+  
+  
+
   return (
     <View style={styles.container}>
-      <View style={{marginBottom:100}}>
-        <Text style={{fontSize:25,fontWeight:'bold'}}>Welcome to Blog App</Text>
+      <View style={{ marginBottom: 100 }}>
+        <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+          Welcome to Blog App
+        </Text>
       </View>
       <Text style={styles.text}>Email</Text>
       <TextInput
@@ -45,11 +50,16 @@ const LoginScreen = ({navigation}) => {
         value={password}
         placeholder="password..."
         textContentType="password"
-        secureTextEntry={true}
+        secureTextEntry={passwordVisibility}
+        
       />
       <Button
         onPress={() => onPressLogin(email, password)}
         buttonTitle={"Login"}
+      />
+      <Button
+        onPress={() => setPasswordVisibility((prevState) => !prevState)}
+        buttonTitle={"Hide Text"}
       />
     </View>
   );
@@ -59,7 +69,7 @@ const LoginScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent:'center',
+    justifyContent: "center",
     alignItems: "center",
   },
   text: {

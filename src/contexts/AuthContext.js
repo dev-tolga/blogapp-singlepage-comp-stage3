@@ -1,5 +1,5 @@
 import { View, Text, Aler } from "react-native";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext ,useReducer} from "react";
 import {
   getUsers,
   getUsersById,
@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = async (email, password) => {
     try {
+      setIsLoading(true);
       const response = await getUsers();
       if (response && response.status === 200) {
         const user = response.data.find(
@@ -41,6 +42,7 @@ const AuthProvider = ({ children }) => {
           console.log("user: ", user);
           setUser(user);
           setAuth(true);
+          setIsLoading(false);
           return true;
         } else {
           setAuth(false);
@@ -55,7 +57,7 @@ const AuthProvider = ({ children }) => {
   //servise gidicek user var mı bakcak varsa isLogini tru
   return (
     <AuthContext.Provider
-      value={{ isAuth, user, setUser, handleLogin, handleRegister }}
+      value={{ isAuth, user, setUser, handleLogin, handleRegister,isLoading ,setAuth}}
     >
       {children}
     </AuthContext.Provider>

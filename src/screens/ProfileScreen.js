@@ -3,7 +3,7 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   return (
     <ScrollView>
       <View style={{ alignItems: "center", margin: 30 }}>
@@ -62,7 +62,7 @@ const ProfileScreen = () => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("FavoritesScreen")}>
           <View
             style={{
               flexDirection: "row",

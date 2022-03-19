@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import {
   Alert,
   Keyboard,
@@ -11,9 +11,11 @@ import NewBlogForm from "../components/blog-form/NewBlogForm";
 import Button from "../components/common/Button";
 import { createBlog } from "../library/network/requests/blogs";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import { AuthContext } from "../contexts/AuthContext";
 
 const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const { isAuth, setAuth } = useContext(AuthContext);
 
   const [isFormVisible, setIsFormVisible] = useState(true);
 
@@ -34,6 +36,31 @@ const HomeScreen = ({ navigation }) => {
       console.log(error);
     }
   };
+  const logout = () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => {
+            setAuth(false);
+            console.log("OK Pressed");
+            navigation.navigate("LoginScreen");
+            
+
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -49,7 +76,7 @@ const HomeScreen = ({ navigation }) => {
             }}
           >
             <Button
-              onPress={() => navigation.navigate("BlogsScreen")}
+              onPress={()=>logout()}
               buttonTitle={"Go to Blogs"}
             />
             <Button

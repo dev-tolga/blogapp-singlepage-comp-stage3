@@ -124,7 +124,7 @@ const BlogsScreen = ({ navigation, route }) => {
   };
 
   return (
-    <View>
+    <View style={{flex:1}}>
       {isLoading ? (
         <LoadingSpinner />
       ) : (

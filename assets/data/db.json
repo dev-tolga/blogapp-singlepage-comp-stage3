@@ -2,8 +2,8 @@
   "blogs": [
     {
       "title": "javascript programming2",
-      "blogContent": "primitive types vs reference types",
-      "author": "Tolga11345671dfd1",
+      "blogContent": "primitive types vs reference types32",
+      "author": "Tolga11345671dfd11",
       "id": 2
     },
     {
@@ -43,6 +43,12 @@
       "id": 2,
       "email": "Test@mail.com",
       "password": "12345"
+    },
+    {
+      "id": 3,
+      "email": "Test1@ee.com",
+      "password": "12345"
     }
+    
   ]
 }

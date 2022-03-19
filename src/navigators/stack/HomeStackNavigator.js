@@ -11,6 +11,7 @@ import { AntDesign } from "@expo/vector-icons";
 import LoginScreen from "../../screens/LoginScreen";
 import { AuthContext } from "../../contexts/AuthContext";
 import RegisterScreen from "../../screens/RegisterScreen";
+import ProfileStackNavigator from "../profile/ProfileStackNavigator";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,7 +51,7 @@ const HomeTabNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="user" size={size} color={color} />
